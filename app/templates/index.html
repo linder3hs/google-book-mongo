@@ -27,7 +27,11 @@
         <td>{{ book.isbn }}</td>
         <td>
           <button class="btn btn-warning">Edit</button>
-          <button class="btn btn-danger">Delete</button>
+          <a
+            href="{{ url_for('book_router.delete_book', id=book.title) }}"
+            class="btn btn-danger"
+            >Delete</a
+          >
         </td>
       </tr>
       {% endfor %}

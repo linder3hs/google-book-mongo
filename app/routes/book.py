@@ -32,3 +32,21 @@ def create_book():
      return redirect(url_for('book_router.index'))
  
   return render_template("create.html", book_form=book_form)
+
+
+@book_router.route("/update/<id>")
+def update_book(id):
+  db.books.find_one_and_update({"title": id}, {"title": "new title"})
+
+  flash("Libro eliminado", "success")
+
+  return redirect(url_for('book_router.index'))
+
+
+@book_router.route("/eliminar/<id>")
+def delete_book(id):
+  db.books.delete_one({"title": id})
+
+  flash("Libro eliminado", "success")
+
+  return redirect(url_for('book_router.index'))
