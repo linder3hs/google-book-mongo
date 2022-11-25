@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block content %}
+
+<h1>Lista de libros</h1>
+<a href="{{ url_for('book_router.create_book') }}"> Crear un libro </a>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Autor</th>
+        <th>Titulo</th>
+        <th># Pages</th>
+        <th>Publish date</th>
+        <th>Descripcion</th>
+        <th>ISBN</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in books %}
+      <tr>
+        <td>{{ book.author }}</td>
+        <td>{{ book.title }}</td>
+        <td>{{ book.pages }}</td>
+        <td>{{ book.publish_date }}</td>
+        <td>{{ book.description }}</td>
+        <td>{{ book.isbn }}</td>
+        <td>
+          <button class="btn btn-warning">Edit</button>
+          <button class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock content %}
